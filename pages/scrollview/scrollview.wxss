@@ -1,0 +1,25 @@
+/* pages/scrollview/scrollview.wxss */
+.container1 {
+  background-color: purple;
+  /* 设置为内容不换行 */
+  white-space: nowrap;
+}
+.item1 {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  margin: 10px;
+  /* 设置为一行可以显示多个 */
+  display: inline-block; 
+}
+
+.container2 {
+  margin-top: 20px;
+  background-color: orange;
+  height: 300px;
+}
+.item2 {
+  height: 100px;
+  margin: 10px;
+  background-color: green;
+}

@@ -1,0 +1,38 @@
+<!--pages/image/image.wxml-->
+<!-- 1.基本使用  -->
+<!-- 重点：
+  1. image组件可以写成单标签，也可以双标签
+  2. image组件默认有自己的大小（哪怕没有图片时）:320x240
+  3. image组件是一个行内块元素，没有独占一行，但可以设置宽高 
+-->
+<!-- <image />
+<text>哈哈哈</text> 
+-->
+
+<!-- 2. src属性 本地地址(相对路径或绝对能路径，绝对路径以/开头)或远程地址 -->
+<!-- <image src="/assets/img/xxx.jpg" /> -->
+<image src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" />
+<!-- 补充知识： 选择相册图片 -->
+<button bindtap="chooseImageAlbum">选择相册图片</button>
+<image src="{{imagePath}}" />
+
+<view>-----------------------------------------</view>
+<!-- 3. bindload 监听图片加载完成 -->
+<!-- lazy-load 图片懒加载 -->
+<image wx:for="{{1}}" 
+  src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"
+  bindload="imageLoaded"
+  lazy-load  />
+
+  <!-- 4. show-menu-by-longpress 长按图片出现识别小程序码 -->
+  <image
+  show-menu-by-longpress
+  src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"
+   />
+
+   <!-- 5. mode 模式，默认值是scaleToFill 缩放模式，不保持纵横比缩放图片，使得图片的宽高完全拉满整个image组件元素的大小，mode有很多可选值，参考官方文档 
+   -->
+   <image
+  mode="top"
+  src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"
+   />

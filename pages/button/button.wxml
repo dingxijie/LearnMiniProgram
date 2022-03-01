@@ -1,0 +1,16 @@
+<!--pages/button/button.wxml-->
+<!-- 1. button的基本使用 -->
+<button>按钮</button>
+<!-- 2. size属性：mini, 实质上是加了样式inline-block -->
+<button size="mini">按钮</button>
+<button size="mini">按钮</button>
+<!-- 3.type属性，改变主题 -->
+<button size="mini" type="primary">按钮</button>
+<!-- 4. plain:镂空效果 -->
+<button size="mini" type="primary" plain>按钮</button>
+<!-- 5.disabled 禁用 -->
+<button size="mini" disabled>按钮</button>
+<!-- 6. loading 效果 -->
+<button size="mini" loading>按钮</button>
+<!-- 7. 点击下去的效果hover-class -->
+<button hover-class="pressed">按钮</button>
