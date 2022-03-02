@@ -1,0 +1,29 @@
+/* 自定义样式导入 */
+@import './styles/box.wxss';
+@import './styles/content.wxss';
+
+/* 导入微信官方基础样式库searchbar的样式 */
+@import './styles/weui-searchbar.wxss';
+
+.box {
+  color: green;
+  font-size: 20px;
+}
+
+/* .box1 {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+.box2 {
+  width: 200rpx;
+  height: 200rpx;
+  background-color: green;
+} */
+
+/* .content1 {
+  font-size: 32px;
+}
+.content2 {
+  font-size: 64rpx;
+} */

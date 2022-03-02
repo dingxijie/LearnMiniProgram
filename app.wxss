@@ -1,2 +1,8 @@
 /**app.wxss**/
+/* 导入全局按钮样式 */
+@import './styles/btn.wxss';
 
+.container {
+  color: orange;
+  font-size: 20px;
+}
