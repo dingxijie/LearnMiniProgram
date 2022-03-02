@@ -1,0 +1,3 @@
+<template name="abc">
+  <view>你好，小火车</view>
+</template>

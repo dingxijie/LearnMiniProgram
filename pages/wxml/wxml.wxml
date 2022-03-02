@@ -1,0 +1,79 @@
+<!--pages/wxml/wxml.wxml-->
+<!-- 1. wxml的格式，便签补全；属性大小写敏感 -->
+<!-- 
+<view></view> 
+<image />
+ -->
+
+ <!-- 2. Mustache语法知识补充 -->
+ <!-- Mustache用在内容上 -->
+ <view>{{message}}</view>
+ <view>{{firstname}} {{lastname}}</view>
+ <view>{{firstname + ' ' + lastname}}</view>
+ <view>{{age >= 18 ? '成年人' : '未成年人'}}</view>
+ <view>{{nowTime}}</view>
+
+ <!-- Mustache用在属性上 -->
+ <button size="mini" bindtap="switchColor">切换颜色</button>
+ <view class="box {{isActive ? 'active' : ''}}">哈哈哈</view>
+
+ <view>----------条件判断 wx:if/wx:elif/wx:else---------</view>
+ <!-- wx:if的使用 -->
+ <view wx:if="{{isShow}}">哈哈哈</view>
+ <!-- wx:elif/wx:else使用 -->
+ <view wx:if="{{score >= 90}}">优秀</view>
+ <view wx:elif="{{score >= 60}}">良好</view>
+ <view wx:else="">不及格</view>
+
+ <!-- 
+   hidden属性和wx:if条件判断的区别
+   hidden 是 将样式display:none
+   wx:if={{false}} 是压根不会渲染和创建该组件
+-->
+
+<view>--------------列表渲染 wx:for-------------------</view>
+<!-- 可以遍历数组/字符串/数字 -->
+<view wx:for="{{['aa','bb','cc']}}">{{item}} {{index}}</view>
+<view wx:for="hello">{{item}} {{index}}</view>
+<view wx:for="{{3}}">{{item}} {{index}}</view>
+
+<!-- 给wx:for里面的 index和item起别名 -->
+<view wx:for="{{3}}" wx:for-item="num" wx:for-index="i">{{num}}-{{i}}</view>
+
+<!-- wx:key的作用, 在数组中间插入一个值时候，会使用diff算法提高性能，可以高效的更新虚拟DOM -->
+<view wx:for="{{letters}}" wx:key="{{item}}">{{item}}</view>
+
+<view>-----------------block标签----------------------</view>
+<!-- block标签仅仅是一个标签，而不是一个组件，是不会被渲染出来的。
+有时候需要一组组件打包显示，使用view组件包裹会消耗性能，可以改为block标签包裹
+block标签只接收一些控制属性，比如wx:if，wx:for
+ -->
+<block wx:if="{{true}}">
+  <view>哈哈哈</view>
+  <view>呵呵呵</view>
+  <view>嘿嘿嘿</view>
+</block>
+
+<view>-----wxml中的 模板template导入 import ------</view>
+<!-- 之前的时候小程序不支持自定义组件，为了进行代码的复用，使用template比较多，现在用的很少了 -->
+<!-- 模板中包裹的内容，在没有被使用前，是不会进行任何渲染的，模板必须有name属性 -->
+<!-- <template name="contentItem">
+  <button size="mini">{{btnText}}</button>
+  <view>{{content}}</view>
+</template> -->
+<!-- 将上面的template抽取出来，放入单独的文件，并在此import导入,import不支持循环导入，也就是模板内部不支持import别的模板，但inclue支持循环引用 -->
+<import src="/wxml/template" />
+<import src="/wxml/abc" />
+
+<!-- 如何使用模板 -->
+<template is="contentItem" data="{{btnText:'点击我', content:'我我我'}}" />
+<template is="contentItem" data="{{btnText:'点击你', content:'你你你'}}" />
+<template is="contentItem" data="{{btnText:'点击他', content:'他他他'}}" />
+
+<template is="abc" />
+
+<view>--------wxml中的 include引入---------</view>
+<!-- include写在什么地方，代码就显示在什么位置，但不能导入template和wxs, 并且inclue支持循环引入 -->
+<include src="/wxml/header" />
+<view>我是中间部分</view>
+<include src="/wxml/footer" />
