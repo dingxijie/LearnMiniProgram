@@ -1,0 +1,16 @@
+// js 代码
+var message = "hello world";
+var name = 'coderwhy';
+var sum = function(num1, num2) {
+  return num1 + num2;
+}
+function test() {
+  return "你好，小程序"
+}
+
+module.exports = {
+  message: message,
+  name: name,
+  sum: sum,
+  test: test
+}

@@ -1,0 +1,16 @@
+// 价格格式化
+function priceFormat(price, number) {
+  var num = number || 2;
+  return price.toFixed(num);
+}
+
+// 时间格式化
+function dateFormat(timestamp, format) {
+  return '2020-12-12 13:22:14'
+}
+
+// commonjs模块化导出
+module.exports = {
+  priceFormat: priceFormat,
+  dateFormat: dateFormat
+}

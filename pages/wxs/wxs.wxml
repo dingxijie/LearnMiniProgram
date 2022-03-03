@@ -1,0 +1,47 @@
+<!-- 
+  wxs的作用：在wxml中，有一些数据需要做处理，而我们的js函数是不可以进行处理的，就需要微信提供的wxs进行处理。
+  wxs使用的限制和特点：
+  1. wxs的运行环境和js代码是隔离的，wxs中不能调用其他js文件中定义的函数，也不能调用小程序提供的API。
+  2. wxs函数不能作为组件的事件回调。
+  由于运行环境的差异，在ios设备上小程序内的wxs会比js代码快2~20倍。在android设备上，两者运行效率无差异。
+-->
+<!-- 1. 错误的写法 -->
+<!-- <view>{{}25.666666.toFixed()}/view> -->
+<!-- <view>{{numberToFixed(25.66666)}}</view> -->
+
+<!-- 2. wxs的定义方式2种 
+       1）：在wxml中用<wxs></wxs>包裹的标签内写的js脚本就是wxs，并且定义module属性，内部不可用es6语法 -->
+<!-- <wxs module="info">
+  // js 代码
+  var message = "hello world";
+  var name = 'coderwhy';
+  var sum = function(num1, num2) {
+    return num1 + num2;
+  }
+  function test() {
+    return "你好，小程序"
+  }
+
+  module.exports = {
+    message: message,
+    name: name,
+    sum: sum,
+    test: test
+  }
+</wxs> -->
+
+<!-- 2) 定义在单独的wxs文件中，再使用<wxs>标签进行src导入，并加上module属性 -->
+<wxs src="/wxs/info.wxs" module="info" />
+
+<!-- 使用wxs脚本 -->
+<view>{{info.message}}</view>
+<view>{{info.name}}</view>
+<view>{{info.sum(10,20)}}</view>
+<view>{{info.test()}}</view>
+
+<!-- 3. wxs的实际应用 -->
+<wxs src="/wxs/format.wxs" module="format" />
+<view>{{format.priceFormat(25.666666)}}</view>
+<view>{{format.priceFormat(25.666666, 4)}}</view>
+<view>{{format.dateFormat(1560598160, 'yyyy-MM-dd HH:mm:ss')}}</view>
+
