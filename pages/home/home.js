@@ -1,66 +1,50 @@
 // pages/home/home.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    goods:['衣服', '鞋子', '袜子']
+  }, 
+  handleBtnclick() {
+    console.log("用户点击了")
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  handleTouchstart() {
+    console.log("handleTouchstart")
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  handleTouchmove() {
+    console.log("handleTouchmove")
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  handleTouchend() {
+    console.log("handleTouchend")
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  handleTap() {
+    console.log("handleTap")
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  handleLongpress() {
+    console.log("handleLongpress")
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  handleItemClick(event) {
+    //console.log(event);
+    // 通过event.currentTarget.dataset.属性名字，来获取data-属性名称 的参数值。
+    const dataset = event.currentTarget.dataset;
+    const index = dataset.idx;
+    const item = dataset.item;
+    console.log(index, item);
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+  capView1() {
+    console.log("capView1");
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+  bindView1() {
+    console.log("bindView1");
+  },
+  capView2() {
+    console.log("capView2");
+  },
+  bindView2() {
+    console.log("bindView2");
+  },
+  capView3() {
+    console.log("capView3");
+  },
+  bindView3() {
+    console.log("bindView3");
+  },
 })

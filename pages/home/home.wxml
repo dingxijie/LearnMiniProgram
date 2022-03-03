@@ -1,3 +1,49 @@
-<!--pages/home/home.wxml-->
-<text class="title">Hello World</text>
-<button size="mini">按钮</button>
+<!-- 1. 事件处理的回顾,1.5版本后中间可以加个冒号 -->
+<button size="mini" bindtap="handleBtnclick">按钮</button>
+<button size="mini" bind:tap="handleBtnclick">按钮</button>
+<button size="mini" catch:tap="handleBtnclick">按钮</button>
+
+<!-- 2. 常见事件类型 -->
+<!-- touchcancle事件在某些特定场景下才触发，比如来电打断等；
+tap事件和longpress事件，通常只会触发其中一个 -->
+<view class="box"
+      bind:touchstart="handleTouchstart"
+      bind:touchmove="handleTouchmove"
+      bind:touchend="handleTouchend"
+      bind:tap="handleTap"
+      bind:longpress="handleLongpress"></view>
+
+<!-- 3. 事件对象的分析（event对象的各种属性分析）
+  重点注意下currenttarget和target的区别，两者大部分时候是一样的，但在事件冒泡的时候，currenttarget指的是被触发事件的对象，而target指的是产生事件的对象
+ -->
+
+ <!-- 4. 事件的参数传递
+  1）传递参数：data-属性的名称
+  2) 获取参数: e.currentTarget.dataset.属性的名称
+-->
+<view class="container">
+  <block wx:for="{{goods}}" wx:key="index">
+    <view class="good-item" 
+    bind:tap="handleItemClick"
+    data-idx="{{index}}"
+    data-item="{{item}}">
+    {{item}}
+  </view>
+  </block>
+</view>
+
+<!-- 
+  5. 事件的冒泡和事件的捕获：
+  事件的捕获是先从外向内一层层捕获的，而事件的冒泡相反是从内到外一层层冒泡
+  bind和catch的区别：
+  bind：一层层传递事件
+  catch: 阻止事件的进一步传递
+ -->
+ <view class="view1" capture-bind:tap="capView1" bind:tap="bindView1">
+  <view class="view2" capture-bind:tap="capView2" catch:tap="bindView2">
+    <view class="view3" capture-bind:tap="capView3" bind:tap="bindView3"></view>
+  </view>
+ </view>
+
+
+
