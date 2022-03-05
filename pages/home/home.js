@@ -1,66 +1,35 @@
 // pages/home/home.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    counter: 0
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  // 用event中的detail接收发射自定义事件时候传过来的数据
+  handleIncrement(event) {
+    //console.log('-----',event);
+    console.log(event.detail.name)
+    console.log(event.detail.age)
+    this.setData({
+      counter: this.data.counter + 1
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  // tab-control组件内部发生了点击，传到了外部这里来处理
+  handleTabClick(event) {
+    const detail = event.detail;
+    const index = detail.index;
+    const title = detail.title;
+    console.log(index,title);
   },
+  // 通过this.selectCompnent(id或者class)获取组件对象
+  handleCpnIncrement() {
+    // id或者class都可以
+    const selectCpnObj = this.selectComponent('#my-select-cpn');
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+    // 直接修改数据（可以，但不推荐，推荐调用方法方式，如下）
+    // selectCpnObj.setData({
+    //   counter: selectCpnObj.data.counter + 1
+    // })
 
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    // 调用方法
+    selectCpnObj.incrementCounter(10);
   }
 })

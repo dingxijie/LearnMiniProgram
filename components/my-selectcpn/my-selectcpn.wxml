@@ -1,0 +1,2 @@
+<!--components/my-selectcpn/my-selectcpn.wxml-->
+<view>组件内计数器： {{counter}}</view>

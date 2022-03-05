@@ -3,5 +3,8 @@
     "pages/home/home",
     "pages/about/about"
   ],
+  "usingComponents": {
+    
+  },
   "sitemapLocation": "sitemap.json"
 }

@@ -1,3 +1,66 @@
 <!--pages/home/home.wxml-->
 <text class="title">Hello World</text>
 <button size="mini">按钮</button>
+
+<!-- 1. 自定义组件的基本使用 -->
+<!-- 在页面中使用自定义组件，需要先在json中注册；
+如果多个页面都用到，可以在app.json中统一注册一次即可 -->
+<!-- <my-cpn></my-cpn>
+<my-cpn></my-cpn>
+<my-cpn /> -->
+
+<!-- 
+  2. 自定义组件的样式细节，结论：
+  1）：组件内的class样式和组件外的class样式，默认是有一个隔离效果的，互不影响
+  2）：为了防止样式的错乱，官方不推荐使用id, 属性, 标签选择器
+  3）：如果需要让页面和组件内的样式产生影响，可以在组件的js文件中的Component({})函数的对象参数中加入一个options参数选项，里面有个key事styleIsolation,有三个值
+    1>. isolated：默认值，有隔离效果
+    2>. apply-share：页面的样式会对组件内样式产生影响，反之不会
+    3>. shared: 页面和组件之间样式都互相影响了
+-->
+<!-- 例子：省略了 -->
+
+<!-- 3. 自定义组件和页面之间的通信 -->
+<view>------------------父传子-----------------</view>
+<!-- 3.1 给自定义组件传递数据和样式 -->
+<my-props title="哈哈哈" content="我是哈哈哈的内容" titleclass="red" />
+<my-props title="呵呵呵" content="我是呵呵呵的内容" titleclass="green" />
+<my-props title="嘿嘿嘿" titleclass="blue" />
+
+<view>------------------子传父-----------------</view>
+<!-- 4. 组件内部发出自定义事件向外传递数据 -->
+<view>计数器：{{counter}}</view>
+<my-event bind:increment="handleIncrement" />
+
+<!-- 5. tab-control自定义组件练习 -->
+<view>-----------tab-control自定义组件练习-------------</view>
+<tab-control 
+    titles="{{['衣服','鞋子','袜子']}}"
+    bind:itemclick="handleTabClick"
+    />
+
+<view>----访问组件的方式 this.selectComponent(组件的id或者class)---</view>
+<!-- 6. 在页面上或者一个组件里直接获得另一个组件对象，然后调用组件内方法，或者直接修改组件内数据 -->
+<button size="mini" bind:tap="handleCpnIncrement">修改组件内的计数器数据</button>
+<my-selectcpn id="my-select-cpn" class="my-select-cpn" />
+
+<view>----------------7. 插槽的使用-----------------</view>
+<!-- 7.1 单个插槽的使用 -->
+<my-slot>
+  <button size="mini">我是插入的按钮</button>
+</my-slot>
+<my-slot>
+  <text style="color: red;">我是插入的文本</text>
+</my-slot>
+<view>############################</view>
+<!-- 7.1 多个插槽的使用 -->
+<!-- 
+注意事项：
+  1. 给每一个插槽起一个名字：name属性
+  2. 必须在Component({})中添加一个选项： options -> multipleSlots: true 
+-->
+<my-multi-slot>
+  <button size="mini" slot="slot2">我是插入的按钮</button>
+  <slider slot="slot1" />
+  <text slot="slot3">哈哈哈</text>
+</my-multi-slot>
