@@ -1,3 +1,18 @@
-<!--pages/home/home.wxml-->
-<text class="title">Hello World</text>
-<button size="mini">按钮</button>
+<view>-----------系统API之_弹窗展示分类---------</view>
+
+<!-- 1. Toast -->
+<button size="mini" bind:tap="handleShowToast">show Toast</button>
+
+<!-- 2. Modal -->
+<button size="mini" bind:tap="handleShowModal">show Modal</button>
+
+<!-- 3. loading -->
+<button size="mini" bind:tap="handleShowLoading">show Loading</button>
+
+<!-- 4. showActionSheet -->
+<button size="mini" bind:tap="handleShowActionSheet">show ActionSheet</button>
+
+<!-- 5. 点击分享按钮,前提是先实现home.js中的onShareAppMessage方法 -->
+<button open-type="share">点此分享</button>
+
+<view>------系统API之_小程序登录流程，在app.js------</view>

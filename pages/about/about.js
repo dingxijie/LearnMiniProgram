@@ -61,6 +61,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '我是about页分享',
+      path: '/pages/home/home',
+      imageUrl: 'https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg'
+    }
   }
 })
